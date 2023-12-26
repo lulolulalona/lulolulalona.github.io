@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #333;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .label {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0);
+            color: #333;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 20px;
+            font:larger;
+        }
+
+        .label-name {
+            top: 10px;
+            left: 50%;
+        transform: translateX(-50%);
+        
+        }
+
+        .label-bottom1 {
+            background-color: rgba(0, 0, 0, 0);
+            bottom: 10px;
+        }
+
+        .label-bottom2 {
+            background-color: rgba(0, 0, 0, 0);
+            bottom: 40px;
+        }
+
+        .label-left {
+            left: 25px;
+        }
+
+        .animated-text {
+            animation: text 1s linear infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .social-icon {
+            margin-right: 10px;
+            color: #777777;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #007BFF;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <nav>
+        <h1 >Portfolio</h1>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-56A971CAA033F06CFF52EA86854666E1-Png/150/150/AvatarHeadshot/Png/noFilter" alt="Profile Image" class="profile-image">
+                <h3 style="color: #f0f0f0;">lulolulalona</h3>
+                <p style="color: #777777">Scripter/Programmer</p>
+                <div>
+                    <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.github.com" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="https://www.stackoverflow.com" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h3>Projects</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="https://www.roblox.com/games/12876963758/Marble-Rail-Update">
+                            <img src="https://tr.rbxcdn.com/1bfcae3d533f2879c4dba370f8f774ae/768/432/Image/Png" alt="Project Image" class="project-image">
+                            <div class="label label-name h1">Marble Rail Update</div>
+                            <div class="label label-bottom1 label-left animated-text h1">
+                                Visits: <span id="visits">456</span> 
+                            </div>
+                            <div class="label label-bottom2 label-left animated-text h1">
+                                Active: <span id="activePlayers">123</span> 
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="https://www.example2.com"><img src="https://via.placeholder.com/300x300" alt="Project Image" class="project-image"></a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="https://www.example3.com"><img src="https://via.placeholder.com/300x300" alt="Project Image" class="project-image"></a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="https://www.example4.com"><img src="https://via.placeholder.com/300x300" alt="Project Image" class="project-image"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // This is just an example to simulate updating the numbers every 5 seconds.
+        // Replace the following values with your actual values or a way to retrieve them.
+        const gameUniverseId = '4506887869';
+        
+        const activePlayers = fetch(`https://games.roblox.com/v1/games?universeIds=${gameUniverseId}`)
+ .then(response => response.json())
+ .then(data => {
+    if (data.data && data.data.length > 0) {
+      const gameId = data.data[0].id;
+      fetch(`https://games.roblox.com/v1/games/${gameId}`)
+        .then(response => response.json())
+        .then(data => {
+          const activePlayers = data.playing;
+          console.log('Active players:', activePlayers);
+        });
+    } else {
+      console.log('No game found with the provided universe ID');
+    }
+ });;
+        const visits = 456;
+
+        setInterval(() => {
+        const activePlayersLabel = document.getElementById('activePlayers');
+        const visitsLabel = document.getElementById('visits');
+
+        if (activePlayersLabel.textContent !== activePlayers.toString()) {
+            activePlayersLabel.textContent = activePlayers;
+        }
+
+        if (visitsLabel.textContent !== visits.toString()) {
+            visitsLabel.textContent = visits;
+        }
+    }, 5000);
+    </script>
+</body>
+</html>
