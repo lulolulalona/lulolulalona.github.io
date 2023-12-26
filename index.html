@@ -30,20 +30,20 @@
             position: relative;
             border-radius: 10px;
             margin: 10px;
+            transition: 0.3s;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
         }
 
-        .label {
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0);
-            color: #333;
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 30px;
-            font:x-large;
-            top: 50%;
-            left: 50%;
-        transform: translateX(-50%);
+        .project-image:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+            height: 210px;
+            width: 110%;
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
+
         .social-icon {
             margin-right: 10px;
             color: #777777;
@@ -54,6 +54,14 @@
             color: #007BFF;
         }
 
+        .text {
+            color: #777777;
+            transition: 0.3s;
+        }
+        
+        .text:hover {
+            color: #f0f0f0;
+        }
     
     </style>
 </head>
@@ -66,7 +74,7 @@
             <div class="col-md-4">
                 <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-56A971CAA033F06CFF52EA86854666E1-Png/150/150/AvatarHeadshot/Png/noFilter" alt="Profile Image" class="profile-image">
                 <h3 style="color: #f0f0f0;">lulolulalona</h3>
-                <p style="color: #777777">Scripter/Programmer <br>50M+ Visits</p>
+                <p class="text">Scripter/Programmer <br>50M+ Visits</p>
                 <div>
                     <a href="https://twitter.com/lulolulalona" class="social-icon"><i class="fab fa-twitter"></i></a>
                     <a href="https://github.com/lulolulalona" class="social-icon"><i class="fab fa-github"></i></a>
